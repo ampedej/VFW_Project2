@@ -1,0 +1,21 @@
+@charset "utf-8";
+/*
+Project 2
+Edward M Murray Jr
+VFW 1210
+CSS Document
+*/
+/* General Body Styles */
+body { background-color: #F1F1F1; font-family: Verdana, Geneva, sans-serif;  }
+
+/* Index Style */
+h1 {margin: 0px auto; padding: 10px; color: #fff; font: Verdana, Geneva, sans-serif; font-weight: bold; font-size: 24px; text-align: center; text-shadow: 0.1em 0.1em #384D49; background-image: url(../images/head_bg.jpg); background-repeat: repeat-x; }
+div { color: #1A2322; margin: 10px 0 0 5px; }
+
+/* Add Item Style */
+form { background-color: #CCD7D5; border-radius: 20px; padding: 10px; border: solid #384C49; border-width: 2px; }
+fieldset { border: none; }
+legend { font-size: 20px; font-weight: bold; text-align:left; text-decoration: underline; color: #000;  }
+label { text-align: left; }
+ul { line-height: 25px; }
+textarea{ width: 100%; height: 100px; }
