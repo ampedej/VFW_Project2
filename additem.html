@@ -21,11 +21,15 @@ VFW 1210
 	</head>
 	<body>
     	<h1>The Recipe Vault</h1>
-    	<div>Add your new recipe!</div>
-    	<br>
+    	<nav>
+    		<a href="#" id="clear">Clear Recipes</a>
+    		<a href="#" id ="displayLink">Display Recipes</a>
+    		<a href="additem.html" id ="addNew" style= "display:none;">Add Another Recipe</a>
+    	</nav>
+    	<br />
     	<form action="#" method="post" id= "recipeForm" />
     		<fieldset id = "recipeFieldset">
-    			<legend>Recipe Information</legend>
+    			<legend>Add your new recipe!</legend>
     			<ul>
     				<li><label for="rname">Recipe Name:</label><input type="text" id="rname" /></li>
     				<li><label for="dateadded">Date:</label><input type="date" min="2012-09-25" max="2014-01-01" id="dateadded" placeholder="2012-09-25" /></li>
@@ -45,10 +49,6 @@ VFW 1210
     			<input type="submit" value="Add My Recipe" id="submit" />
     		</fieldset>
     	</form>
-    		<ul>
-    			<li><a href="#" id="clear">Clear Data</a></li>
-    			<li><a href="#" id ="displaylink">Display Data</a></li>
-    		</ul>
     	<script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>

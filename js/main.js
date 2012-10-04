@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(selectType);
 	}
 	
-		//Find value of Category Radio
+	//Find value of Category Radio
 	function getSelectedRadio(){
 		var radios = document.forms[0].category;
 		for(var i=0; i<radios.length; i++){
@@ -38,8 +38,30 @@ window.addEventListener("DOMContentLoaded", function(){
 				categoryValue = radios[i].value;
 			}
 		}
-	}	
-
+	}
+		
+	//Toggle Controls Function
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('recipeForm').style.display = "none";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display  = "none";
+				$('addNew').style.display = "inline";
+				break;
+			case "off":
+				$('recipeForm').style.display = "block";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display  = "inline";
+				$('addNew').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
+	
+	//Store Data Function
 	function storeData(){
 		var id					= Math.floor(Math.random()*100000001);
 		getSelectedRadio()
@@ -57,12 +79,20 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Recipe Saved!");
 	}
 	
+	//Get Data Function
 	function getData(){
+		toggleControls("on")
+		if(localStorage.length === 0){
+			alert("There are no recipes stored. Add new recipe!");
+			window.location.reload(); //Reload page if no data stored instead of going to data storage page.
+			return false;
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('items').style.display = "block";
 		for(var i=0, length=localStorage.length; i<length; i++){
 			var makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
@@ -80,16 +110,28 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//Clear Local Function
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("No recipes to clear.");
+		}else{
+			localStorage.clear();
+			alert("All recipes have been deleted!");
+			window.location.reload();
+			return false;
+		}
+	}
+	
 	//Variable Defaults
 	var recipeTypes = ["--Meats--", "Chicken", "Beef", "Pork", "Fish", "--Pasta--", "Spaghetti", "Lasagna", "Pasta Salad", "Ravioli", "--Soups--", "Chili", "Chowder", "Stew", "Seafood", "--Dessert--", "Cake", "Cookies", "Pie", "Mousse"],
 		categoryValue;
 	makeTypes();
 	
 	//Link & click submit events.
-	var displayLink = $('displaylink');
-	displayLink.addEventListener("click", getData);/*
-	var clearLink = $('clearLink');
-	clearLink.addEventListener("click", clearLocal);*/
+	var displayLink = $('displayLink');
+	displayLink.addEventListener("click", getData);
+	var clearLink = $('clear');
+	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 	
